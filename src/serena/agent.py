@@ -65,7 +65,7 @@ log = logging.getLogger(__name__)
 TTool = TypeVar("TTool", bound="Tool")
 T = TypeVar("T")
 SUCCESS_RESULT = "OK"
-DEFAULT_TOOL_TIMEOUT: float = 240
+DEFAULT_TOOL_TIMEOUT: float = 3600
 
 
 def _sanitize_symbol_dict(symbol_dict: dict[str, Any]) -> dict[str, Any]:
