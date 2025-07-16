@@ -1617,7 +1617,7 @@ class SolidLanguageServer(ABC):
         """
         return Path(self.repository_root_path) / ".serena" / "cache" / self.language_id / "document_symbols_cache_v23-06-25.pkl"
 
-    def index_repository(self, progress_bar: bool = True, save_after_n_files: int = 10) -> None:
+    def index_repository(self, progress_bar: bool = True, save_after_n_files: int = 1) -> None:
         """Will go through the entire repository and "index" all files, meaning save their symbols to the cache.
 
         :param progress_bar: Whether to show a progress bar while indexing the repository.
@@ -1705,7 +1705,7 @@ class SolidLanguageServer(ABC):
 
         :return: self for method chaining
         """
-        self.logger.log(
+        print(
             f"Starting language server with language {self.language_server.language} for {self.language_server.repository_root_path}",
             logging.INFO,
         )

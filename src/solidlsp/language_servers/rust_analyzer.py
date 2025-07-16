@@ -55,7 +55,7 @@ class RustAnalyzer(SolidLanguageServer):
                 RuntimeDependency(
                     id="RustAnalyzer",
                     description="RustAnalyzer for macOS (arm64)",
-                    url="https://github.com/rust-lang/rust-analyzer/releases/download/2023-10-09/rust-analyzer-aarch64-apple-darwin.gz",
+                    url="https://github.com/rust-lang/rust-analyzer/releases/download/2025-07-14/rust-analyzer-aarch64-apple-darwin.gz",
                     platform_id="osx-arm64",
                     archive_type="gz",
                     binary_name="rust_analyzer",
@@ -63,7 +63,7 @@ class RustAnalyzer(SolidLanguageServer):
                 RuntimeDependency(
                     id="RustAnalyzer",
                     description="RustAnalyzer for Linux (x64)",
-                    url="https://github.com/rust-lang/rust-analyzer/releases/download/2023-10-09/rust-analyzer-x86_64-unknown-linux-gnu.gz",
+                    url="https://github.com/rust-lang/rust-analyzer/releases/download/2025-07-14/rust-analyzer-x86_64-unknown-linux-gnu.gz",
                     platform_id="linux-x64",
                     archive_type="gz",
                     binary_name="rust_analyzer",
@@ -71,7 +71,7 @@ class RustAnalyzer(SolidLanguageServer):
                 RuntimeDependency(
                     id="RustAnalyzer",
                     description="RustAnalyzer for Windows (x64)",
-                    url="https://github.com/rust-lang/rust-analyzer/releases/download/2023-10-09/rust-analyzer-x86_64-pc-windows-msvc.zip",
+                    url="https://github.com/rust-lang/rust-analyzer/releases/download/2025-07-14/rust-analyzer-x86_64-pc-windows-msvc.zip",
                     platform_id="win-x64",
                     archive_type="zip",
                     binary_name="rust-analyzer.exe",
@@ -611,10 +611,16 @@ class RustAnalyzer(SolidLanguageServer):
         self.server.on_notification("experimental/serverStatus", check_experimental_status)
 
         self.logger.log("Starting RustAnalyzer server process", logging.INFO)
+        print("Starting RustAnalyzer server process", logging.INFO)
         self.server.start()
         initialize_params = self._get_initialize_params(self.repository_root_path)
 
         self.logger.log(
+            "Sending initialize request from LSP client to LSP server and awaiting response",
+            logging.INFO,
+        )
+
+        print(
             "Sending initialize request from LSP client to LSP server and awaiting response",
             logging.INFO,
         )
